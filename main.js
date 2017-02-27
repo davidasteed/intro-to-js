@@ -22,7 +22,12 @@
  //     your `birthYear` and the `currentYear`
  //     (NOTE: DO NOT simply assign a number to the `age` variable, use an expression!)
 
-
+let firstName = "David";
+let lastName = "Steed";
+const birthYear = 1967;
+let currentYear = 2017;
+let middleName;
+let age = currentYear - birthYear;
 
  // TODO 2:
  // (a) Create a `greeting` variable as a string which says:  "Hello there _____!"
@@ -33,6 +38,10 @@
  //     NOTE: This variable SHOULD NOT have any decimal places!
  //     NOTE: You MUST USE an expression for this, it may have more than one operation!
 
+let greeting = "Hello there " + (firstName + "!");
+let turnOfCentury = 1900;
+// use bitwise operator to "remove" the fractional portion of the expression
+let decades = ((birthYear - turnOfCentury)/10) | 0;
 
 
  // TODO 3:
@@ -47,7 +56,20 @@
  //         depending on the value of `instructorIsAwesome`
  //     NOTE: You MUST use code to determine which value to assign to `review`!
 
+let style;
+if (birthYear < 35){
+  style = "hip";
+} else {
+  style = "classic";
+}
 
+let instructorIsAwesome = true;
+let review;
+if (instructorIsAwesome) {
+  review = "good";
+} else {
+  review = "bad";
+}
 
  // TODO 4:
  // (a) Create a function called `math` which accepts three arguments: two numbers
@@ -61,8 +83,19 @@
  // (c) If the `math` function is NOT called with one of the operations in (b)
  //     then it should return the value for something that is Not a Number
 
-
-
+function math(number1, number2, string1) {
+  if (string1 === "add") {
+    return number1 + number2;
+  } else if (string1 === "subtract") {
+    return number1 - number2;
+  } else if (string1 === "multiply") {
+    return number1 * number2;
+  } else if (string1 === "divide") {
+    return number1 / number2;
+  } else {
+    return NaN;
+  }
+}
 
  // TODO 5:
  // (a) Write a function called `madlib` that takes 4 separate words as
@@ -73,7 +106,39 @@
  // (b) If any of the words is not provided to the function then it should use
  //     the word "bananas" instead.
 
+function madlib(word1, word2, word3, word4) {
+  let placeholderWord = "bananas";
+  let fragment1 = "I prefer ";
+  let fragment2 = " while I ";
+  let fragment3 = " so that I don't ";
+  let fragment4 = " on the ";
+  let fragment5 = ".";
+  let writeWord1, writeWord2, writeWord3, writeWord4;
 
+  if (!word1) {
+    writeWord1 = placeholderWord;
+  } else {
+    writeWord1 = word1;
+  }
+  if (!word2) {
+    writeWord2 = placeholderWord;
+  } else {
+    writeWord2 = word2;
+  }
+  if (!word3) {
+    writeWord3 = placeholderWord;
+  } else {
+    writeWord3 = word3;
+  }
+  if (!word4) {
+    writeWord4 = placeholderWord;
+  } else {
+    writeWord4 = word4;
+  }
+
+  return (fragment1 + writeWord1 + fragment2 + writeWord2 +
+      fragment3 + writeWord3 + fragment4 + writeWord4 + fragment5);
+}
 
 
  /* ******************************************************************
@@ -86,7 +151,16 @@
  //     a string provided as an argument. For example, reverse("jag testar")
  //     should return the string "ratset gaj".
 
+function reverse(inputString) {
+  let resultString = "";
 
+  // then write the remaining characters in reverse order
+  for (let i = inputString.length - 1; i >= 0; i--) {
+    resultString += inputString[i];
+  }
+
+  return resultString;
+}
 
  /* ******************************************************************
                               EPIC Mode
@@ -100,7 +174,51 @@
  //     For example, translate("this is fun") should return the string:
  //     "tothohisos isos fofunon".
 
+function translate(inString) {
+  let outString = "";
+  let isConsonant = false;
 
+  for (let i = 0; i < inString.length; i++) {
+    // set a boolean to indicate if the char is not matching on of the vowels
+    // else set to true
+    if (inString[i] === "a") {
+      isConsonant = false;
+    } else if (inString[i] === "e") {
+      isConsonant = false;
+    } else if (inString[i] === "i") {
+      isConsonant = false;
+    } else if (inString[i] === "o") {
+      isConsonant = false;
+    } else if (inString[i] === "u") {
+      isConsonant = false;
+    } else if (inString[i] === "A") {
+      isConsonant = false;
+    } else if (inString[i] === "E") {
+      isConsonant = false;
+    } else if (inString[i] === "I") {
+      isConsonant = false;
+    } else if (inString[i] === "O") {
+      isConsonant = false;
+    } else if (inString[i] === "U") {
+      isConsonant = false;
+    } else if (inString[i] === " ") {
+      isConsonant = false;
+    } else if (inString[i] === "y") {
+      isConsonant = false;
+    } else if (inString[i] === "Y") {
+      isConsonant = false;
+    } else {
+      isConsonant = true;
+    }
+    // write the string
+    if (isConsonant) {
+      outString += inString[i] + "o" + inString[i];
+    } else {
+    outString += inString[i];
+    }
+  }
+  return outString;
+}
 
 
 /* ***************************************************************
